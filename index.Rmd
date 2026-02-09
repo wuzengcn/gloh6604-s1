@@ -1,0 +1,896 @@
+---
+title: "Overview of economic evaluation modelling"
+subtitle: "<br/>"
+author: "Wu Zeng, MD, PHD"
+institute: "Georgetown University"
+date: "2026/2/20"
+output:
+  xaringan::moon_reader:
+ # css: ["default", "libs/css/my-blue.css", "default-fonts", "libs/css/hygge-gu.css"]
+    css: ["libs/css/zuwm.css", "libs/css/zuwm-fonts.css"]
+    seal: false
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, echo = FALSE, message = FALSE, 
+  comment = NA, dpi = 300,
+  fig.align = "center", cache = FALSE)
+library(tidyverse)
+library(DiagrammeR)
+library(widgetframe)
+library(xaringanExtra)
+library(kableExtra)
+library(readxl)
+options(knitr.kable.NA = '')
+options(scipen = 999) 
+xaringanExtra::use_tile_view()
+xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+```
+
+class: title-slide, center, middle
+
+# `r rmarkdown::metadata$title`
+
+### `r rmarkdown::metadata$author`
+
+### `r rmarkdown::metadata$institute`
+
+### `r rmarkdown::metadata$date`
+
+---
+# Outline 
+
+- Syllabus review
+
+- Overview of economic economic evaluation modelling
+
+  - What is economic evaluation
+  
+  - Why is economic evaluation needed
+  
+  - Steps in conducting economic evaluation
+
+---
+class:middle
+
+# Introduce yourself 
+
+- Name and where are you from?
+
+- What would you like to achieve from the class?
+
+---
+class: middle
+
+# Instructor
+
+.pull-left[
+
+## Faculty: Wu Zeng ("Wu")
+
+  - Epidemiology, Biostatistics, and preventive medicine
+  
+  - Health Financing and heath systems
+  
+  - Econometrics
+  
+  - Health Economics
+  
+  - Economic Evaluation 
+  
+  - Research Methods
+  
+  - Data analysis with R 
+]
+
+.pull-right[
+
+<center> 
+
+<img style = "border-radius:50%;" src = "https://gu360.file.force.com/servlet/servlet.ImageServer?id=0151Q000005FMtlQAG&oid=00D36000000rQpzEAE", width = "200px">
+
+Office: Room 219 St Mary's Hall 
+
+<!---Office hour: 11:30 AM - 12:30 PM on Tuesday--->
+
+Office hours: .red[by appointment] 
+
+If you would like join the office hour by zoom, the Zoom link is: https://georgetown.zoom.us/j/7817363888?omn=99684597563
+]
+---
+
+class: middle 
+
+# Learning resources 
+
+.pull-left[
+- Lectures and slides
+
+- Required books: 
+
+  - [Methods for the economic evaluation of health care programms](https://academic.oup.com/book/54294)
+  
+- Case studies 
+
+- Online resources
+
+- Instructor
+
+- Each other
+]
+
+.pull-right[
+
+<img src = "https://oup.silverchair-cdn.com/oup/backfile/content_public/books/54294/book/2/m_9780198529446.jpeg?Expires=1768255540&Signature=3OUTNgOcs4WNKy-EIdWksRDezktn26jlA4kQPBeW~2-mXe0cdmQudE6vzFItZC0wZCM2UBR57mvnnHKU2dtUPcU6VVGOR6CBMvptb3TPg8CLCy6S2faJS8fu7qEGTqRpdnwnkksoYu-Kh9-Uu5TznKqU8acHtf0jOIdOFrLMVOhC8m0WMRUR3ryIxeo0RSI5M1KVzJMrGoL~LpONPEdQ3xabJ~SX6~fp2fWhBmGJnWjnMSoUedc6VcuOsvpW-PUss4XkewaIXLDPWbX-gXFmum8PT1Qizimz9sHdOJwtb6NT3xVYKAooNhmmyRbkHGPByGMEKwkJ1mlfypCI62Bexg__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA", width = "300px">
+
+]
+---
+class: middle
+
+# Course schedule 
+
+.pull-left[
+
+- 9-5 pm (Feb 20-21 and March 13-14)
+
+  - 9 AM -12:30 PM, with 3 10-minute breaks
+  
+  - 1:30 - 5:00 PM, with 3 10-minutes breaks
+]  
+---
+# Performance evaluation
+
+.pull-left[
+
+- Class participation (10%) <super>1</super>
+  
+- 1 mid-term paper (20%) 
+  
+- 1 final paper (70%)
+
+]
+
+.pull-right[
+
+<img style = "border-radius:10%;" src = "https://previews.123rf.com/images/topvectors/topvectors1704/topvectors170400683/76172547-schedule-calendar-and-pencils-set-of-school-and-education-related-objects-in-colorful-cartoon-style.jpg" width = "400px"/>
+
+]
+
+.footnote[F will be given if a students skips 20% of the sessions with no reasonable excuse]
+---
+
+# What is prohibited
+
+Academic cheating
+
+Plagiarism
+
+If you are uncertain in a specific instance, ask the instructor
+
+---
+# Class objectives and contents
+
+.pull-left[
+
+### Overall objective
+
+- Perform cost-effectiveness analysis using TreeAge (Decision tree and Markov)
+
+]
+
+.pull-right[
+
+1. Overview
+
+2. Measuring costs 
+
+3. Measuring effectiveness
+
+4. Cost-effectiveness and utility analysis 
+
+5. Decision tree model
+
+6. Markov model
+
+7. Markov model and sensitivity analysis 
+
+8. Cost-benefit analysis, reporting guidelines, and student presentation
+
+]
+---
+# Software 
+
+.pull-left[
+
+Decision tree and markov model: [TreeAge](https://www.treeage.com/trial-download/) 
+- Please register **Free trial** license (Evaluation Healthcare) in **March**
+]
+
+.pull-right[
+
+<image src="https://www.treeage.com/wp-content/uploads/2020/04/Markov-Full-Structure.png" width="100%" height="300px"> 
+
+]
+
+---
+class: inverse middle center
+
+# Overview of economic evaluation modelling in health
+
+---
+class: top
+
+# Contents 
+
+.pull-left[
+
+- .red[What] is economic evaluation
+
+- .red[Why] is it important
+
+- .red[How] to conduct economic evaluation
+
+- .red[Issues] on economic evaluation
+]
+
+.pull-right[
+
+<image src= "https://www.theregreview.org/wp-content/uploads/2021/11/1181611248.jpg" width = "100%">
+]
+
+---
+# What is economic evaluation
+
+.pull-left[
+> ### .red[Is the drug worthy?] 
+
+> ###.red[How much is a drug worth?] 
+
+<image src="https://i0.wp.com/calmatters.org/wp-content/uploads/2023/08/080123-Flavored-Medicine-GH-REUTERS-CM.jpg?w=2000&ssl=1" width = "500 px">
+
+]
+
+--
+.pull-right[
+
+### What determines the .red[value] of drugs
+
+### [Poll](https://www.mentimeter.com/app/presentation/alfjsws6nuc1169c3rv6hoivq38k2zy6/view?question=7hwevjuwudx6)
+
+<center> 
+
+<image src="libs/pic/qr_code_1.png" width ="60%">
+
+]
+
+---
+# What is economic evaluation
+
+```{r include=TRUE, fig.align='center'}
+m <- grViz("
+digraph{
+graph [rankdir = LR]  
+node [shape = circle, style = filled, fillcolor = Beige]
+S [label = 'Choice']
+P1 [label = 'Program A']
+P2 [label = 'Program B']
+C1 [label = 'Consequences A']
+C2 [label = 'Consequences B']
+
+S  -> P1 [label = 'Cost A']  
+P1 -> C1 
+S  -> P2 [label = 'Cost B']  
+P2 -> C2
+}
+")
+
+frameWidget(m)
+
+```
+
+---
+# What is economic evaluation 
+
+.red[Definition]: The comparative analysis of .red[alternative] course of action in terms of both their .red[costs] and .red[consequences]. 
+
+Alternative definition: Drugs and other technologies are assessed for use and/or for a reimbursement price by looking at .red[incremental health-related effects] and .red[costs] relative to .red[existing treatments]. 
+
+### Incremental cost-effectivenesss ratio (ICER)
+
+$$ICER = \frac{\Delta Costs}{\Delta \text{Health Outcome}} = \frac{\text{Costs}_{int}-\text{Costs}_{Status quo}}{\text{Health outcome}_{int}-\text{Health outcome}_{Status quo}}$$
+---
+# Why is it important to conduct economic evaluation
+
+<iframe width="800" height="400" src="https://www.youtube.com/embed/tPbMJe5xxgE" title="Keytruda, Immunotherapy Drug That Aided Jimmy Carter’s Cancer, ‘A Huge Deal’ | TODAY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+--
+
+> Cancer immunotherapy drug Keytruda™ costs .red[$150,000 per year]
+
+---
+# Economic evaluation: Why is it important? 
+
+.red[Definition]: Drugs and other technologies are assessed for use and/or for a reimbursement price by looking at .red[incremental health-related effects] and .red[costs] relative to .red[existing treatments]. 
+
+$$ICER = \frac{\Delta Costs}{\Delta \text{Health Outcome}} = \frac{\text{Costs}_{int}-\text{Costs}_{Status quo}}{\text{Health outcome}_{int}-\text{Health outcome}_{Status quo}}$$
+
+- Budget constraints
+
+- Optimize available resources 
+
+  - Key concept 1: .red[Marginal benefit] equals to .red[marginal cost]
+  
+  - Key concept 2: The resources used for an individual would results in that the resource could not be used for others
+  
+---
+# Economic evaluation in early days
+
+.pull-left[
+
+<img src="libs/pic/QALYs.png" width="90%" align="center" />
+
+Source: Zeckhauser R, .red[Shepard DS]. 1976. 
+
+<br>
+
+<img src="libs/pic/stason.png" width="100%" align="center" />
+
+Source: Weinstein MC, .red[Stason WB]. 1977. 
+]
+
+.pull-right[
+
+<img src="libs/pic/shepard.png" width="100%" align="center" />
+
+Source: .red[Shepard DS], Thompson MS. 1979. 
+
+]
+
+---
+# Global regulation on ecnomic evaluation
+
+.pull-left[
+
+The United Kingdom: National Institute for Health and Clinical Excellence (NICE)
+
+- Cost per quality-adjusted life years (QALYs)
+
+Sweden: Dental and Pharmaceutical Benefits Board
+
+- Cost-effectiveness analysis for reimbursing drugs
+  
+Many other countries also establish specific agencies requesting economic evaluation for new medicines
+
+United States: Less regulated. 
+
+- .red[Forbids] the use of cost per QALY as a threshold to establish what type of health care is cost-effectiveness or recommended
+]
+
+.pull-right[
+
+<iframe width="800" height="350" src="https://www.youtube.com/embed/BliByNegKlk" title="How NICE makes its decisions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+]
+---
+# Economic evaluation approaches
+
+<image src="/libs/pic/CEMethods.png" >
+
+---
+# Economic evaluation approaches continue...
+
+<center> 
+
+<iframe width="800" height="400" src="https://www.youtube.com/embed/cUgkWYeRsJk" title="Health Economic Evaluation Basics - Putting a price tag on health -" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+---
+
+# Other evaluation methods
+
+<center> 
+
+<image src="/libs/pic/EE.png" width = "75%">
+
+---
+# Distinguishing characteristics of health care evaluation
+
+<center> 
+
+<image src="libs/pic/S1-F2.png" width="80%">
+
+---
+class: inverse center middle
+
+.pull-left[
+# First Principles of Cost-Effectiveness Analysis in Health
+
+### Donald S. Shepard
+
+### Mark S. Thompson
+]
+
+.pull-right[
+
+```{r echo=FALSE, out.width="100%", out.height="500px"}
+knitr::include_graphics("libs/pic/S1-Shepard-1976.pdf")
+```
+
+]
+---
+# Steps in cost-effectiveness analysis 
+
+.pull-left[
+
+- Define the program
+
+- Compute the net cost
+
+- Compute net health effects
+
+- Apply decision rules
+
+- Perform sensitivity analysis
+]
+---
+# Define the program (Framing the economic evaluation)
+
+.pull-left[
+
+- Develop .red[alternative] approaches to the problem (purpose)
+
+  - Reference cases: 
+  
+    - Standard set of assumptions for consistent analyses
+    
+    - Comparator is the status quo
+
+    - Uses a discount rate of 3%
+  ]
+
+.pull-right[
+- Define precisely programs to be analyzed (who, what, where, when, and how)
+
+  - Who: whose costs and whose outcomes (.red[perspectives])
+
+      - societal, health system, government, payers 
+    
+  - What: what is the intervention
+  
+  - where: where the intervention is implemented 
+  
+  - When: .red[Time frame]
+  
+  - How: How was the intervention implemented
+]
+
+---
+# Perspectives
+
+- The healthcare sector perspective
+
+  - One perspective in cost-effectiveness analysis.
+
+  - Counts all resources .red[within the health care system], but not outside (often those paid by insurers or governments)
+  
+- The societal perspective
+
+  - One perspective in cost-effectiveness analysis.
+
+  - Counts all resources used by a health program, .red[regardless of their source].
+
+---
+# Compute net cost (Counting the costs)
+
+- Compute gross program costs
+
+- Compute monetary savings
+
+- Discount .red[future] costs and savings to .red[present value] (PV)
+
+- Compute net costs (gross costs less savings)
+
+---
+# Calcuating the cost 
+
+.pull-left[
+- Determine the cost perspective 
+
+  - Economic cost: include shadow cost and donated costs
+  
+  - Financial cost: does not include shadow and donated costs
+]
+.pull-right[
+
+- What cost should be included
+
+  1. Intervention cost 
+  
+  2. Potential savings from the intervention 
+  
+  3. Costs associated with the side effect of the cost
+  
+### Net cost = (1)-(2)+(3)
+
+  ]
+---
+# Example 
+
+A health education program to provide education to local population on how to better manage the sanitation during the COVID-19 pandemic. The education program last for .red[3 months], and the resources to implementation the education program include the following:
+
+1. Four full time employees with monthly salary: $3,000 per month per employee
+
+1. Transportation allowance per month per employee: $300
+
+1. Cost of materials materials (e.g., Pamphlet): $500
+
+1. Cost of rental (e.g. space, facilities): $1000
+
+It is expected that the education program would avert 3000 individuals from the COVID-19 infection. It was estimated that about 20% of infected individuals would seek care and, on average, each of them would have 2.5 visits in a year, with the cost of $20 per visit from health system's perspective. 
+
+(1) What is the cost of the education program?
+
+(2) What the savings from the education program?
+
+(3) What is the net cost from the health system perspective?
+
+---
+# Estimation 
+
+.center[**Program cost**]
+
+```{r}
+read_excel("libs/pic/Tables.xlsx", sheet = "Sheet1", range = "A1:E6") %>%
+  kbl() %>%
+  kable_classic(full_width = F)
+```
+
+.center[**Savings**]
+
+```{r}
+read_excel("libs/pic/Tables.xlsx", sheet = "Sheet1", range = "A7:E8") %>%
+  kbl() %>%
+  kable_classic(full_width = F)
+```
+
+--
+$$\text{Net cost} = 41,100 - 30,000 = 10,100$$
+---
+# What about the cost from societal perspective? 
+
+--
+
+Assuming that during the 3 months education period,
+
+(1) A total of 200,000 individual visits to the education site
+
+(2) On average each visit last 10 minutes
+
+(3) The local average salary per month (30 days, 8 working hours per day): $500
+
+--
+
+The cost of the households was estimated to be
+
+$$500/30/8/60*10*200,000=69,444$$
+--
+
+The total net cost of the program was 
+
+$$11,100 + 69,444 = 80,544$$
+---
+# Compute net effectiveness
+
+.pull-left[
+
+- Additional years with full health
+
+- Additional years with disease
+
+- Improvement in health (no extension of life)
+
+- Negative effects (inconveniences and morbidity)
+
+]
+
+.pull-right[
+
+<image src="libs/pic/S1-F1.png" width = "100%"/>
+
+]
+---
+# Continue with the previous example 
+
+.pull-left[
+
+Key message: 
+
+- Prevent 3000 infections 
+
+  - 20% with symptoms
+  
+  - 80% with no major symptoms
+
+Net effectiveness in term of .red[number of prevented infections]
+
+.center[300]
+
+]
+
+-- 
+
+.pull-right[
+
+If interested in QALY gained 
+
+- Cases with major symptoms: 
+  
+  - Quality of life: 0.85, 
+  
+  - Duration per episode: 14 days 
+
+- Case with no or mild symptoms:
+
+  - Quality of life: 0.95
+  
+  - Duration per episode: 10 days
+
+- Assuming no death
+
+]
+---
+# QALYs estimation 
+
+```{r}
+read_excel("libs/pic/Tables.xlsx", sheet = "Sheet2", range = "A1:F4") %>%
+  kbl(digits = 2, position = c("L","R","R","R","R","R")) %>%
+  kable_classic()
+```
+---
+# Incremental cost-effectiveness ratio (ICER)
+
+- Numerator: .red[Difference of cost] between new drugs and status quo
+
+- Denominator: .red[Difference of health outcomes (Effectiveness)] of new drugs and status quo
+
+$$ICER = \frac{\Delta Cost}{\Delta Effectiveness} = \frac{{Cost_{Int}}-Cost_{Status Quo}}{Effectiveness_{Int}-Effectiveness_{Status Quo}}$$
+
+--
+
+### What is the meaning of ICER?
+
+--
+<center>
+
+.large[.red[Price]] to pay in order to gain .red[1 unit] increase in the .red[health benefit]
+
+</center>
+---
+# Continue with the previous example 
+
+.pull-left[
+
+Key information 
+
+- Net cost 
+
+  - Net cost (health system): $11,100
+  
+  - Net cost (Societal): $80,544
+  
+- Net effectiveness
+
+  - Prevented cases: 3,000
+  
+  - QALY gained: 6.74 QALYs 
+
+]
+
+.pull-right[
+
+- In terms of cases prevented
+
+  - ICER (Health system) = $11,100/3000 = 3.70$ per case
+
+  - ICER (Societal) = $80,544/3000 = 26.85$ per case
+
+- In terms of QALys 
+
+  - ICER (Health system) = $11,100/6.74 = 1,646.88$ per QALY
+  
+  - ICER (Societal) = $80,544/6.74 = 11,950.15$ per QALY
+
+]
+
+---
+# Applied decison rule
+
+Identify case based on signs of net costs and net effects
+
+Apply rule for appropriate case
+
+.pull-left[
+
+<image src="libs/pic/Drules.png" width = "100%" >
+]
+
+.pull-right[
+
+$$ICER = \frac{\Delta Cost}{\Delta Effectiveness} \\
+= \frac{{Cost_\text{Int}}-Cost_\text{Status Quo}}{Effectiveness_\text{Int}-Effectiveness_\text{Status Quo}}$$
+
+]
+---
+
+# Two key approaches for decision making 
+
+- .red[Willingness to pay] (WTP)
+
+> Will you be willing to pay .red[$100,000] to gain additional .red[1 years of your life] with perfect health? 
+
+- Comparing **ICER** with external reference standard or monetary .red[threshold]
+
+> Suppose the calculated ICER is .red[$3,000 per QALY gained] in Afghanistan for a vaccine program, is the vaccine program cost-effective? 
+
+---
+# Perform sensitivity analysis 
+
+.red[Definition]: Varying key uncertain parameters in the model and repeat the analysis. 
+
+.red[Purpose]: To exame how sensitive the result is to the parameters.
+
+key parameters may include 
+
+  - Cost of interventions 
+  
+  - Cost of treatment 
+  
+  - Epidemiological information 
+  
+  - Utility measures (quality of life or disability weight)
+  
+  - Discount rate
+  
+---
+# Continue with the previous example (One-way: Preventing 4000 cases)
+
+.pull-left[
+```{r, out.height="80%"}
+read_excel("libs/pic/Tables.xlsx", sheet = "Sheet1", range = "A1:E16") %>%
+  kbl(digits = 2) %>%
+  kable_classic(full_width = F, font_size = 14)
+```
+]
+
+.pull-right[
+```{r, out.height="80%"}
+read_excel("libs/pic/Tables.xlsx", sheet = "Sheet3", range = "A1:E16") %>%
+  kbl(digits = 2) %>%
+  kable_classic(full_width = F, font_size = 14)
+```
+]
+
+---
+exclude: TRUE
+
+# Quality-adjusted life **years** (QALYs)
+
+.pull-left[
+$$QALY = Q*LYs$$ where Q is .red[Quality of Life] and LY is .red[Life **Years**]
+
+$$\Delta QALYs = Q_{n}*LYs_{n} - Q_{s}*LYs_{s}$$ where `n` means new drugs and `s` standard treatment
+
+A typical TB patient with has an average quality of life of .red[0.8] during the
+illness, and the TB symptoms last .red[6 months] until the patient is fully
+recovered.
+
+- How many QALYs does the patient live during the illness?
+
+- How many QALYs saved per case if TB vaccine could avert the TB?
+]
+
+.pull-right[
+### [Poll](https://www.mentimeter.com/app/presentation/alyvr4itr193828iu8whtvjzek7sxywr/wsfn7xkz3ekr/edit)
+
+<image src="libs/pic/qr_code.png" width ="70%" >
+]
+
+---
+exclude: TRUE
+
+# Calcuation 
+
+### How many QALYs does the patient live during the illness?
+
+$$QALY_s = Q_s*LYs_s = 0.8*\frac{6}{12} = 0.8*0.5= 0.4$$
+### How many QALYs saved per case if TB vaccine could avert TB cases?
+
+$$\Delta QALYs = Q_{n}*LYs_{n} - Q_{s}*LYs_{s}$$
+$$Q_{n}*LYs_{n} = 1*\frac{6}{12}=1*0.5=0.5$$
+$$\Delta QALYs = 0.5-0.4=0.1$$
+
+---
+exclude: TRUE
+
+background-image: url("libs/pic/qr_code_3.png")
+background-position: 95% 3%
+background-size: 10%
+
+# An hypothetical example 
+
+A dengue vaccine cost .red[$20] per dose. Full vaccination a child under 9 years old requires 3 doses. The efficiency of the dengue vaccine was estimated to be .red[60%]. The .red[QALYs loss] per dengue infection, on average was estimated to be .red[0.035]. 
+
+The .red[incidence] of dengue in the country was estimated to be .red[2%] among children under 9. Assuming that the treatment cost per dengue case is, on average, .red[$100 per infection]. What is the incremental cost-effectiveness ratio (ICER) of the dengue vaccine. 
+
+Based on this information, what would you recommend? 
+
+### <center> [Poll](https://www.mentimeter.com/app/presentation/alxz84p1turvk4y3ayhceautkeqck39e/3dkxhvgj5auy)
+
+
+$$Cost \text{ per person}_{vaccine} = (20*3 + 100*2\%*(1-60\%)) = 60.8$$
+$$Cost \text{ per person}_\text{no vaccine} = (0 + 100*2\%) = 2$$
+$$\Delta Cost \text{ per person} = 60.8 - 2 = 58.8$$
+
+$$\Delta QALY \text{ per person} = 0.035*2\%*60\% = 0.00042$$
+
+
+$$ICER = \frac{58.8}{0.00042} = 140,000$$
+What does this number tell us? Is it worthwhile to deploy the vaccine to control dengue?
+
+---
+# Issues of using CEA 
+
+[What are the major issues in using CEA to value phmarceutical innovations](https://www.mentimeter.com/app/presentation/al3m1h9iq6hikvn5ddjcpykjh2zks5sp/ni97j7br22tc/edit)
+
+--
+.pull-left[
+
+- Ethical issue
+
+- Equity issue
+
+- Technical issues 
+
+  - No consensus on dimensions of effectiveness to be measured 
+
+  - The heterogeneity of willingness to pay
+
+  - How to compare cost and effectiveness 
+
+]
+---
+# Summary 
+
+.pull-left[
+
+- CEA has been widely used for valuing pharmaceutical innovation 
+
+- CEA is also an important instrument for valuing health interventions
+
+- There are many new developments in addressing the technical issues of CEA
+
+- CEA is .red[NOT] the only criterion for valuing pharmaceutical innovation
+]
+
+.pull-right[
+
+<image src="https://schaeffer.usc.edu/wp-content/uploads/2024/10/grace-cost-effectiveness-analysis-qualy-2.jpg" width = "600px">
+
+]
+
+---
+class: center middle
+
+.Large[# Thank you!]
+
+`r fontawesome::fa("envelope")` : [wz192@georgetown.edu](mailto:wz192@georgetown.edu)
+
+`r fontawesome::fa("twitter")` : [@wuzengcn](@wuzengcn)
+
+
