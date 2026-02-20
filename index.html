@@ -143,9 +143,9 @@ class: middle
 
 - Class participation (10%) &lt;super&gt;1&lt;/super&gt;
   
-- 1 mid-term paper (20%) 
+- 1 concept paper (20%) 
   
-- 1 final paper (70%)
+- 1 final paper (75%)
 
 ]
 
@@ -158,14 +158,34 @@ class: middle
 .footnote[F will be given if a students skips 20% of the sessions with no reasonable excuse]
 ---
 
-# What is prohibited
+# What is prohibited and AI use
 
-Academic cheating
+.pull-left[
 
-Plagiarism
+## What is prohibited 
 
-If you are uncertain in a specific instance, ask the instructor
+- Academic cheating
 
+- Plagiarism
+
+- If you are uncertain in a specific instance, ask the instructor
+
+]
+
+.pull-right[
+
+## AI use policy 
+
+- What is allowed 
+
+  - AI is allowed to used to conduct literature review 
+  
+  - Polish the paper to enhance the readability 
+  
+- What is prohibited 
+
+  - Cannot be used to .red[draft and write the final paper]
+]
 ---
 # Class objectives and contents
 
@@ -173,7 +193,7 @@ If you are uncertain in a specific instance, ask the instructor
 
 ### Overall objective
 
-- Perform cost-effectiveness analysis using TreeAge (Decision tree and Markov)
+- Perform cost-effectiveness analysis using Excel and .red[TreeAge] (Decision tree and Markov)
 
 ]
 
@@ -238,6 +258,11 @@ class: top
 ]
 
 ---
+class: middle center 
+
+# Have you done any economic evaluation analysis in your life? 
+
+---
 # What is economic evaluation
 
 .pull-left[
@@ -265,8 +290,8 @@ class: top
 ---
 # What is economic evaluation
 
-<div id="htmlwidget-86aa4a29b497f0d491a9" style="width:100%;height:2100px;" class="widgetframe html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86aa4a29b497f0d491a9">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d12d767d2b6d2c289859" style="width:100%;height:2100px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d12d767d2b6d2c289859">{"x":{"url":"index_files/figure-html//widgets/widget_unnamed-chunk-1.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 
 ---
 # What is economic evaluation 
@@ -434,7 +459,7 @@ class: inverse center middle
     
   - What: what is the intervention
   
-  - where: where the intervention is implemented 
+  - Where: where the intervention is implemented 
   
   - When: .red[Time frame]
   
@@ -459,13 +484,13 @@ class: inverse center middle
 ---
 # Compute net cost (Counting the costs)
 
-- Compute gross program costs
+- Compute .red[gross program costs]
 
-- Compute monetary savings
+- Compute monetary .red[savings]
 
 - Discount .red[future] costs and savings to .red[present value] (PV)
 
-- Compute net costs (gross costs less savings)
+- Compute .red[net costs] (gross costs less savings)
 
 ---
 # Calcuating the cost 
@@ -481,7 +506,7 @@ class: inverse center middle
 
 - What cost should be included
 
-  1. Intervention cost 
+  1. Intervention (program) cost 
   
   2. Potential savings from the intervention 
   
@@ -493,9 +518,9 @@ class: inverse center middle
 ---
 # Example 
 
-A health education program to provide education to local population on how to better manage the sanitation during the COVID-19 pandemic. The education program last for .red[3 months], and the resources to implementation the education program include the following:
+A .red[health education program] to provide education to local population on how to better manage the sanitation during the COVID-19 pandemic. The education program last for .red[3 months], and the resources to implementation the education program include the following:
 
-1. Four full time employees with monthly salary: $3,000 per month per employee
+1. Four full-time employees with monthly salary: $3,000 per month per employee
 
 1. Transportation allowance per month per employee: $300
 
@@ -503,7 +528,7 @@ A health education program to provide education to local population on how to be
 
 1. Cost of rental (e.g. space, facilities): $1000
 
-It is expected that the education program would avert 3000 individuals from the COVID-19 infection. It was estimated that about 20% of infected individuals would seek care and, on average, each of them would have 2.5 visits in a year, with the cost of $20 per visit from health system's perspective. 
+It is expected that the education program would avert .red[3000 individuals] from the COVID-19 infection. It was estimated that about 20% of infected individuals would seek care and, on average, each of them would have 2.5 visits in a year, with the cost of $20 per visit from health system's perspective. 
 
 (1) What is the cost of the education program?
 
@@ -571,19 +596,15 @@ It is expected that the education program would avert 3000 individuals from the 
  &lt;thead&gt;
   &lt;tr&gt;
    &lt;th style="text-align:left;"&gt; Savings &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; 20 &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; 600 &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; 2.5 &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; 30000 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 20 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 600 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 2.5 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 30000 &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Cost to households &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0347222 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 200000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 69444.44 &lt;/td&gt;
+
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -615,6 +636,8 @@ The total net cost of the program was
 `$$11,100 + 69,444 = 80,544$$`
 ---
 # Compute net effectiveness
+
+--
 
 .pull-left[
 
@@ -648,7 +671,7 @@ Key message:
 
 Net effectiveness in term of .red[number of prevented infections]
 
-.center[300]
+.center[3,000]
 
 ]
 
